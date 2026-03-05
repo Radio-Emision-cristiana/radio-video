@@ -2,7 +2,7 @@
 
 mkdir -p public/hls
 
-ffmpeg -stream_loop -1 -i video.mp4 -i https://stream.zeno.fm/yg7bvksbfwzuv \
+ffmpeg -re-stream_loop -1 -i video.mp4 -i https://stream.zeno.fm/yg7bvksbfwzuv \
 -c:v libx264 -preset veryfast \
 -c:a aac -b:a 128k \
 -f hls \
@@ -11,3 +11,4 @@ ffmpeg -stream_loop -1 -i video.mp4 -i https://stream.zeno.fm/yg7bvksbfwzuv \
 -hls_flags delete_segments \
 
 public/hls/stream.m3u8
+
