@@ -10,4 +10,5 @@ RUN npm install
 
 RUN chmod +x start.sh
 
-CMD ./start.sh & node server.js
+
+CMD sh -c "./start.sh & node server.js"
