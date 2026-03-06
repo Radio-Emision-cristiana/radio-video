@@ -1,15 +1,16 @@
 FROM node:18
 
+RUN apt-get update && apt-get install -y ffmpeg dos2unix
+
 WORKDIR /app
 
-COPY . .
+COPY . /app
 
-RUN apt-get update && apt-get install -y ffmpeg
+RUN dos2unix /app/start.sh
+
+RUN chmod +x /app/start.sh
 
 RUN npm install
 
-RUN chmod +x start.sh
+CMD sh -c "/app/start.sh & node server.js"
 
-EXPOSE 10000
-
-CMD sh -c "./start.sh & node server.js"
